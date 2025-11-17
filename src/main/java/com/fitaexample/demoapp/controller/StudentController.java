@@ -1,5 +1,6 @@
 package com.fitaexample.demoapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,9 +16,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class StudentController {
 
-    UserService userService = new UserService();
+    // UserService userService = new UserService();
 
-    @PostMapping("/singup")
+    // @Autowired
+    public UserService userService;
+
+    public StudentController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @PostMapping("/singup/")
     public String singupUser(@RequestBody User user) {
         return userService.singup(user);
     }

@@ -8,7 +8,6 @@ import com.fitaexample.demoapp.dto.User;
 public class UserService {
 
     public String login(String username, String password) {
-        
         return username;
     }
 
