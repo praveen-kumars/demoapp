@@ -9,9 +9,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class SingupDto {
     private String username;
     private String password;
     private String email;
+    private Long phone;
 
 }

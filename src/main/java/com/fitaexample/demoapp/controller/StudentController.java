@@ -6,38 +6,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fitaexample.demoapp.dto.Loginrequestdto;
-import com.fitaexample.demoapp.dto.User;
-import com.fitaexample.demoapp.service.UserService;
-
+import com.fitaexample.demoapp.dto.SingupDto;
+import com.fitaexample.demoapp.service.StudentService;
 import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 
 @RestController
 public class StudentController {
 
-    // UserService userService = new UserService();
+    @Autowired
+    private StudentService studentService;
 
-    // @Autowired
-    public UserService userService;
-
-    public StudentController(UserService userService) {
-        this.userService = userService;
+    @PostMapping("/singup")
+    public SingupDto singUpStudent(@RequestBody SingupDto singup) {
+        return studentService.saveStudent(singup);
     }
 
-    @PostMapping("/singup/")
-    public String singupUser(@RequestBody User user) {
-        return userService.singup(user);
-    }
-
-    @PostMapping("/login")
-    public String login(@RequestBody Loginrequestdto loginrequestdto) {
-        return userService.login(loginrequestdto.getUsername(), loginrequestdto.getPassword());
-    }
-
-    @GetMapping("/")
-    public String getMethodName(@RequestParam String param) {
-        return param;
+    @GetMapping("/findUser/")
+    public SingupDto getMethodName(@RequestParam Long id) {
+        return studentService.getStudentById(id);
     }
     
+    
+
+   
 }
