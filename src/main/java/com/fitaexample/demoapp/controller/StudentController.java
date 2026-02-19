@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fitaexample.demoapp.dto.Signupres;
 import com.fitaexample.demoapp.dto.SingupDto;
 import com.fitaexample.demoapp.service.StudentService;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,8 +20,12 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+
+
+    // {"name":"John Doe","email":"ssjhsgshj"}
+
     @PostMapping("/singup")
-    public SingupDto singUpStudent(@RequestBody SingupDto singup) {
+    public Signupres singUpStudent(@RequestBody SingupDto singup) {
         return studentService.saveStudent(singup);
     }
 

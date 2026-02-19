@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fitaexample.demoapp.dto.Signupres;
 import com.fitaexample.demoapp.dto.SingupDto;
 import com.fitaexample.demoapp.model.Student;
 import com.fitaexample.demoapp.repository.StudentRepository;
@@ -15,7 +16,7 @@ public class StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public SingupDto saveStudent(SingupDto singup) {
+    public Signupres saveStudent(SingupDto singup) {
 
         Student student = new Student();
         student.setUsername(singup.getUsername());
@@ -28,7 +29,7 @@ public class StudentService {
 
         Student savedValue = studentRepository.save(student);
 
-        SingupDto response = new SingupDto();
+        Signupres response = new Signupres();
         response.setUsername(savedValue.getUsername());
         response.setEmail(savedValue.getEmail());
         response.setPhone(savedValue.getPhone());

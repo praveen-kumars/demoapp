@@ -14,5 +14,4 @@ public class SingupDto {
     private String password;
     private String email;
     private Long phone;
-
 }
